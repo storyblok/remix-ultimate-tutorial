@@ -1,11 +1,23 @@
 import { json, useLoaderData } from "remix";
-import { getStory } from "~/story";
 
-import { useStoryblokState, StoryblokComponent } from "@storyblok/react";
+import {
+  getStoryblokApi,
+  useStoryblokState,
+  StoryblokComponent,
+} from "@storyblok/react";
+
 import Layout from "../components/Layout";
 
 export const loader = async ({ params }) => {
-  return json(await getStory(params.slug));
+  const slug = params.slug ?? "home";
+
+  let sbParams = {
+    version: "draft",
+  };
+
+  let { data } = await getStoryblokApi().get(`cdn/stories/${slug}`, sbParams);
+
+  return json(data?.story);
 };
 
 export default function Page() {
