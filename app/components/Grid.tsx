@@ -1,6 +1,17 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 
-const Grid = ({ blok }) => (
+interface Blok {
+  blok: {
+    _uid: string;
+    columns: [
+      {
+        _uid: string;
+      }
+    ]
+  }
+}
+
+const Grid = ({ blok }: Blok) => (
   <ul {...storyblokEditable(blok)} key={blok._uid}>
     {blok.columns.map((blok) => (
       <li key={blok._uid}>
@@ -9,5 +20,4 @@ const Grid = ({ blok }) => (
     ))}
   </ul>
 );
-
 export default Grid;

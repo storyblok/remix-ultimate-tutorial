@@ -1,4 +1,4 @@
-# Remix Storyblok Boilerplate
+# Remix Storyblok Indie Stack Bolerplate
 
 This repository is a Remix [Storyblok](https://www.storyblok.com) starter template used in following [5 minute tutorial]().
 
