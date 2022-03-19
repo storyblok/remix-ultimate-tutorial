@@ -6,8 +6,6 @@ import {
   StoryblokComponent,
 } from "@storyblok/react";
 
-import Layout from "../components/Layout";
-
 export const loader = async ({ params }) => {
   const slug = params.slug ?? "home";
 
@@ -25,9 +23,5 @@ export default function Page() {
 
   const newStory = useStoryblokState(story);
 
-  return (
-    <Layout>
-      <StoryblokComponent blok={newStory.content} />
-    </Layout>
-  );
+  return <StoryblokComponent blok={newStory.content} />;
 }
