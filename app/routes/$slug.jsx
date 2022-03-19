@@ -19,9 +19,9 @@ export const loader = async ({ params }) => {
 };
 
 export default function Page() {
-  const story = useLoaderData();
+  let story = useLoaderData();
 
-  const newStory = useStoryblokState(story);
+  story = useStoryblokState(story);
 
-  return <StoryblokComponent blok={newStory.content} />;
+  return <StoryblokComponent blok={story.content} />;
 }
