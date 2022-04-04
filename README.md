@@ -1,6 +1,6 @@
 # Remix Storyblok Boilerplate
 
-This repository is a Remix [Storyblok](https://www.storyblok.com) starter template used in following [5 minute tutorial]().
+This repository is a Remix [Storyblok](https://www.storyblok.com) starter template used in following [5 minute tutorial](https://www.storyblok.com/tp/headless-cms-remix).
 
 ## Requirements
 
@@ -8,7 +8,7 @@ To use this project you need a Storyblok account. If you don't have one yet you 
 
 ## How to get started?
 
-Read the [Remix tutorial]() about connecting Storyblok with Remix.
+Read the [Remix tutorial](https://www.storyblok.com/tp/headless-cms-remix) about connecting Storyblok with Remix.
 
 ### 1. Clone the repo
 
