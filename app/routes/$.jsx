@@ -9,9 +9,7 @@ import {
 
 export default function Page() {
   let story = useLoaderData();
-  story = useStoryblokState(story, {
-    resolveRelations: ["featured-posts.posts", "selected-posts.posts"]
-  });
+  story = useStoryblokState(story);
 
   return (
     <>
@@ -25,8 +23,7 @@ export const loader = async ({ params, preview = false }) => {
   let blogSlug = params["*"] === "blog/" ? "blog/home" : null;
 
   let sbParams = {
-    version: "draft", // or 'draft'
-    resolve_relations: ["featured-posts.posts", "selected-posts.posts"],
+    version: "draft"
   };
 
   if (preview) {
