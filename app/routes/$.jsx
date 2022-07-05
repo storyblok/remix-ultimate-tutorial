@@ -11,11 +11,7 @@ export default function Page() {
   let story = useLoaderData();
   story = useStoryblokState(story);
 
-  return (
-    <>
-      <StoryblokComponent blok={story.content} />
-    </>
-  )
+  return <StoryblokComponent blok={story.content} />;
 };
 
 export const loader = async ({ params }) => {
