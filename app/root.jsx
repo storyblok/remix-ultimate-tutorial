@@ -12,16 +12,19 @@ import Feature from "./components/Feature";
 import Grid from "./components/Grid";
 import Teaser from "./components/Teaser";
 import Page from "./components/Page";
+import Post from "./components/Post";
 
 const components = {
   feature: Feature,
   grid: Grid,
   teaser: Teaser,
   page: Page,
+  post: Post,
 };
 
 storyblokInit({
-  accessToken: "your-preview-token",
+  accessToken: "4hK4f9QPB5QjLdkuqhbRDQtt",
+  // accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
   // for spaces located in the US:
   // apiOptions: {
   //   region: "us",
