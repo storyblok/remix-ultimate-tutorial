@@ -22,6 +22,8 @@ const components = {
   post: Post,
 };
 
+import styles from "./styles/app.css";
+
 storyblokInit({
   accessToken: "4hK4f9QPB5QjLdkuqhbRDQtt",
   // accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
@@ -54,4 +56,8 @@ export default function App() {
       </body>
     </html>
   );
+}
+
+export function links() {
+  return [{ rel: "stylesheet", href: styles }];
 }
