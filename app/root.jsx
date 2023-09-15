@@ -1,3 +1,5 @@
+import { cssBundleHref } from "@remix-run/css-bundle";
+
 import {
   Links,
   LiveReload,
@@ -7,43 +9,16 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import { storyblokInit, apiPlugin } from "@storyblok/react";
-import Feature from "./components/Feature";
-import Grid from "./components/Grid";
-import Teaser from "./components/Teaser";
-import Page from "./components/Page";
-import Post from "./components/Post";
-
-const components = {
-  feature: Feature,
-  grid: Grid,
-  teaser: Teaser,
-  page: Page,
-  post: Post,
-};
-
-import styles from "./styles/app.css";
-
-storyblokInit({
-  accessToken: "your_access_token",
-  // for spaces located in the US:
-  // apiOptions: {
-  //   region: "us",
-  // },
-  use: [apiPlugin],
-  components,
-});
-
-export const meta = () => ({
-  charset: "utf-8",
-  title: "New Remix App",
-  viewport: "width=device-width,initial-scale=1",
-});
+export const links = () => [
+  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+];
 
 export default function App() {
   return (
     <html lang="en">
       <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
       </head>
@@ -55,8 +30,4 @@ export default function App() {
       </body>
     </html>
   );
-}
-
-export function links() {
-  return [{ rel: "stylesheet", href: styles }];
 }
