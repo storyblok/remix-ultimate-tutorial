@@ -25,8 +25,7 @@ const components = {
 import styles from "./styles/app.css";
 
 storyblokInit({
-  accessToken: "4hK4f9QPB5QjLdkuqhbRDQtt",
-  // accessToken: process.env.STORYBLOK_PREVIEW_TOKEN,
+  accessToken: "your_access_token",
   // for spaces located in the US:
   // apiOptions: {
   //   region: "us",
