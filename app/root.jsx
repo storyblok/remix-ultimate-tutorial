@@ -1,5 +1,4 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
-
 import {
   Links,
   LiveReload,
@@ -8,6 +7,25 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+
+import { storyblokInit, apiPlugin } from "@storyblok/react";
+import Feature from "./components/Feature";
+import Grid from "./components/Grid";
+import Page from "./components/Page";
+import Teaser from "./components/Teaser";
+
+const components = {
+  feature: Feature,
+  grid: Grid,
+  teaser: Teaser,
+  page: Page,
+};
+
+storyblokInit({
+  accessToken: "your_access_token",
+  use: [apiPlugin],
+  components,
+});
 
 export const links = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
