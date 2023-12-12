@@ -22,14 +22,12 @@ const components = {
 };
 
 storyblokInit({
-  accessToken: "your_access_token",
+  accessToken: "W1vLyxT5rQ15jBpANjnv0gtt",
   use: [apiPlugin],
   components,
 });
 
-export const links = () => [
-  { rel: "stylesheet", href: stylesheet },
-];
+export const links = () => [{ rel: "stylesheet", href: stylesheet }];
 
 export default function App() {
   return (

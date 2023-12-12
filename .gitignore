@@ -1,6 +1,11 @@
 node_modules
 
 /.cache
-/build
 /public/build
+/build
 .env
+
+# Local Netlify folder
+.netlify
+localhost.pem
+localhost-key.pem
