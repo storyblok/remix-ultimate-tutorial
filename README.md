@@ -1,72 +1,42 @@
-# Welcome to Remix!
+# Remix Ultimate Tutorial
 
-- [Remix Docs](https://remix.run/docs)
-- [Netlify Functions Overview](https://docs.netlify.com/functions/overview)
+This repository is a Remix [Storyblok](https://www.storyblok.com) starter template used in following [5 minute tutorial](https://www.storyblok.com/tp/headless-cms-remix).
 
-## Netlify Setup
+## Requirements
 
-1. Install the [Netlify CLI](https://docs.netlify.com/cli/get-started/):
+To use this project you need a Storyblok account. If you don't have one yet you can register at [Storyblok](https://www.storyblok.com). It's free.
 
-```sh
-npm i -g netlify-cli
-```
+## How to get started?
 
-If you have previously installed the Netlify CLI, you should update it to the latest version:
+Read the [Remix tutorial](https://www.storyblok.com/tp/headless-cms-remix) about connecting Storyblok with Remix.
 
-```sh
-npm i -g netlify-cli@latest
-```
-
-2. Sign up and log in to Netlify:
+### 1. Clone the repo
 
 ```sh
-netlify login
+  $ git clone https://github.com/storyblok/remix-ultimate-tutorial.git
 ```
 
-3. Create a new site:
-
-```sh
-netlify init
-```
-
-## Development
-
-Ensure all packages are installed by running:
+### 2. Install all dependecies
 
 ```sh
 npm install
 ```
 
-Run
+### 3. Adding the Access token
+
+Create a new empty Space and exchange the preview token of your new space with the `accessToken` in `app/root.jsx`.
+
+### 4. Run your project
+
+Set the preview domain in <strong>Storyblok</strong> to `http://localhost:3000/`
 
 ```sh
-netlify dev
+npm run dev
 ```
 
-Open up [http://localhost:3000](http://localhost:3000), and you're ready to go!
+This starts your app in development mode, rebuilding assets on file changes.
 
-### Adding Redirects and Rewrites
+## Resources
 
-To add redirects and rewrites, add them to the `netlify.toml` file. For more information about redirects and rewrites, see the [Netlify docs](https://docs.netlify.com/routing/redirects/).
-
-### Serve your site locally
-
-To serve your site locally in a production-like environment, run
-
-```sh
-npm run start
-```
-
-Your site will be available at [http://localhost:8888](http://localhost:8888). Note that it will not auto-reload when you make changes.
-
-## Deployment
-
-There are two ways to deploy your app to Netlify, you can either link your app to your git repo and have it auto deploy changes to Netlify, or you can deploy your app manually. If you've followed the setup instructions already, all you need to do is run this:
-
-```sh
-# preview deployment
-netlify deploy --build
-
-# production deployment
-netlify deploy --build --prod
-```
+- [Remix Docs](https://remix.run/docs)
+- [Storyblok Tutorial]()
