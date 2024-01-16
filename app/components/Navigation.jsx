@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@remix-run/react";
+import { Link, NavLink } from "@remix-run/react";
 
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
