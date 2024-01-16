@@ -9,7 +9,7 @@ const Config = ({ blok }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center  py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <Link href="/" prefetch="intent">
+            <Link to="/" prefetch="intent">
               <img
                 className="h-20 w-auto sm:h-10"
                 src="storyblok-primary.png"
@@ -17,7 +17,7 @@ const Config = ({ blok }) => {
               />
             </Link>
           </div>
-          {blok.header_menu.map((nestedBlok) => (
+          {blok?.header_menu.map((nestedBlok) => (
             <StoryblokComponent
               className=""
               blok={nestedBlok}

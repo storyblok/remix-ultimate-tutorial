@@ -1,9 +1,9 @@
 import Footer from "./Footer";
-import Config from "./Config";
+import Navigation from "./Navigation";
 
-const Layout = ({ children, story }) => (
+const Layout = ({ children }) => (
   <div>
-    <Config blok={story.content} />
+    <Navigation />
     {children}
     <Footer />
   </div>
