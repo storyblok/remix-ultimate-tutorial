@@ -23,7 +23,7 @@ const components = {
 };
 
 storyblokInit({
-  accessToken: "TxjwDdrurDCNvQwkIyREVwtt",
+  accessToken: "U4mv54ozRXmfv2EraUpiTwtt",
   use: [apiPlugin],
   components,
 });
