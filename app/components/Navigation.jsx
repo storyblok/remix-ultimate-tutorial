@@ -11,12 +11,20 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center  py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <Link to="/" prefetch="intent">
-              <img
-                className="h-20 w-auto sm:h-10"
-                src="storyblok-primary.png"
-                alt=""
-              />
+            <Link prefetch="intent" to="/">
+              <a>
+                <span className="sr-only">Storyblok</span>
+                <img
+                  className="h-20 w-auto sm:h-10 hidden sm:block"
+                  src="https://a.storyblok.com/f/88751/251x53/0d3909fe96/storyblok-primary.png"
+                  alt="Storyblok"
+                />
+                <img
+                  className="h-20 w-auto sm:h-10 sm:hidden"
+                  src="https://a.storyblok.com/f/88751/92x106/835caf912a/storyblok-logo.png"
+                  alt="Storyblok"
+                />
+              </a>
             </Link>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
