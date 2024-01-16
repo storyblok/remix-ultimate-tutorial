@@ -14,12 +14,18 @@ import Grid from "./components/Grid";
 import Page from "./components/Page";
 import Teaser from "./components/Teaser";
 import Layout from "./components/Layout";
+import Config from "./components/Config";
+import HeaderMenu from "./components/HeaderMenu";
+import MenuLink from "./components/MenuLink";
 
 const components = {
   feature: Feature,
   grid: Grid,
   teaser: Teaser,
   page: Page,
+  config: Config,
+  header_menu: HeaderMenu,
+  menu_link: MenuLink,
 };
 
 storyblokInit({
