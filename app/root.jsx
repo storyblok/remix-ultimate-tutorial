@@ -38,7 +38,6 @@ export const loader = async () => {
     version: "draft",
     resolve_links: "url",
   });
-  console.log("menu", data.story.content.header_menu);
 
   return json({
     headerMenu: data.story.content.header_menu,
