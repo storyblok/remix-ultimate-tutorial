@@ -14,7 +14,6 @@ import Grid from "./components/Grid";
 import Page from "./components/Page";
 import Teaser from "./components/Teaser";
 import Layout from "./components/Layout";
-import Config from "./components/Config";
 import MenuLink from "./components/MenuLink";
 
 const components = {
@@ -22,7 +21,6 @@ const components = {
   grid: Grid,
   teaser: Teaser,
   page: Page,
-  config: Config,
   menu_link: MenuLink,
 };
 
