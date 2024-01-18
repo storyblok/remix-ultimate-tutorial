@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { NavLink } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
+import { StoryblokComponent } from "@storyblok/react";
 
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const { headerMenu } = useLoaderData();
 
   return (
     <div className="relative bg-white border-b-2 border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center  py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <NavLink prefetch="intent" to="/">
+            <Link prefetch="intent" to="/">
               <a>
                 <span className="sr-only">Storyblok</span>
                 <img
@@ -23,7 +25,7 @@ const Navigation = () => {
                   alt="Storyblok"
                 />
               </a>
-            </NavLink>
+            </Link>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
             <button
@@ -52,21 +54,13 @@ const Navigation = () => {
             </button>
           </div>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
-            <NavLink prefetch="intent" to="/about">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                About
-              </a>
-            </NavLink>
-            <NavLink prefetch="intent" to="/blog">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                Blog
-              </a>
-            </NavLink>
-            <NavLink prefetch="intent" to="/services">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                Services
-              </a>
-            </NavLink>
+            {headerMenu?.map((nestedBlok) => (
+              <StoryblokComponent
+                className=""
+                blok={nestedBlok}
+                key={nestedBlok._uid}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -114,29 +108,13 @@ const Navigation = () => {
               </div>
               <div className="mt-6">
                 <nav className="grid gap-y-8">
-                  <Link to="/about">
-                    <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                      {/* <!-- Heroicon name: outline/chart-bar --> */}
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        About
-                      </span>
-                    </a>
-                  </Link>
-                  <Link to="/blog">
-                    <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                      {/* <!-- Heroicon name: outline/cursor-click --> */}
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        Blog
-                      </span>
-                    </a>
-                  </Link>
-                  <Link to="/services">
-                    <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        Services
-                      </span>
-                    </a>
-                  </Link>
+                  {headerMenu?.map((nestedBlok) => (
+                    <StoryblokComponent
+                      className=""
+                      blok={nestedBlok}
+                      key={nestedBlok._uid}
+                    />
+                  ))}
                 </nav>
               </div>
             </div>

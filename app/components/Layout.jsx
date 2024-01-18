@@ -1,8 +1,8 @@
-import Navigation from "./Header";
 import Footer from "./Footer";
+import Navigation from "./Navigation";
 
 const Layout = ({ children }) => (
-  <div className="text-center">
+  <div>
     <Navigation />
     {children}
     <Footer />
