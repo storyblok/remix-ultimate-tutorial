@@ -255,7 +255,7 @@ const Footer = () => (
       </div>
       <div className="mt-8 md:mt-0 md:order-1">
         <span className="mt-2 text-sm font-light text-gray-500">
-          Copyright © 2017--{new Date().getFullYear()}
+          Copyright © 2017-{new Date().getFullYear()}
           <a
             href="#"
             className="mx-2 text-wickedblue hover:text-gray-500"
