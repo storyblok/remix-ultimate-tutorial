@@ -12,7 +12,7 @@
     "redirects:disable": "shx rm -f public/_redirects"
   },
   "dependencies": {
-    "@netlify/functions": "^2.0.0",
+    "@netlify/functions": "^2.5.1",
     "@netlify/remix-adapter": "^2.0.0",
     "@remix-run/react": "^2.3.1",
     "@storyblok/react": "^2.4.7",
