@@ -1,8 +1,5 @@
 const Footer = () => (
-  <footer
-    className="bg-white lg:absolute lg:bottom-0 block w-full"
-    aria-labelledby="footer-heading"
-  >
+  <footer className="bg-white block w-full" aria-labelledby="footer-heading">
     <h2 id="footer-heading" className="sr-only">
       Footer
     </h2>
@@ -258,7 +255,7 @@ const Footer = () => (
       </div>
       <div className="mt-8 md:mt-0 md:order-1">
         <span className="mt-2 text-sm font-light text-gray-500">
-          Copyright © 2017-{new Date().getFullYear()}
+          Copyright © 2017-2022
           <a
             href="#"
             className="mx-2 text-wickedblue hover:text-gray-500"
@@ -266,7 +263,6 @@ const Footer = () => (
           >
             Storyblok GmbH
           </a>
-          .
         </span>
       </div>
     </div>
