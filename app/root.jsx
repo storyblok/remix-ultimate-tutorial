@@ -15,6 +15,9 @@ import Page from "./components/Page";
 import Teaser from "./components/Teaser";
 import Layout from "./components/Layout";
 import Hero from "./components/Hero";
+import Article from "./components/Article";
+import AllArticles from "./components/AllArticles";
+import PopularArticles from "./components/PopularArticles";
 
 const components = {
   feature: Feature,
@@ -22,10 +25,13 @@ const components = {
   teaser: Teaser,
   page: Page,
   hero: Hero,
+  article: Article,
+  "all-articles": AllArticles,
+  "popular-articles": PopularArticles,
 };
 
 storyblokInit({
-  accessToken: "u2fPkA4eCxmoae9rZlsqVgtt",
+  accessToken: "MX4ACP2TErhMWLJh8QIFlwtt",
   use: [apiPlugin],
   components,
 });
