@@ -1,7 +1,7 @@
 import ArticleTeaser from "./ArticleTeaser";
 import { storyblokEditable } from "@storyblok/react";
 
-const PopularArtices = ({ blok }) => {
+const PopularArticles = ({ blok }) => {
   return (
     <>
       <h2 className="text-3xl">{blok.headline}</h2>
@@ -17,4 +17,4 @@ const PopularArtices = ({ blok }) => {
     </>
   );
 };
-export default PopularArtices;
+export default PopularArticles;
