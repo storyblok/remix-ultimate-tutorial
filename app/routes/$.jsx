@@ -9,7 +9,9 @@ import {
 
 export default function Page() {
   let { story } = useLoaderData();
-  story = useStoryblokState(story);
+  story = useStoryblokState(story, {
+    resolveRelations: ["popular-articles.articles"],
+  });
 
   return (
     <>
