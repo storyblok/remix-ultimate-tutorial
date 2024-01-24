@@ -8,7 +8,7 @@ import {
 } from "@storyblok/react";
 
 export default function Page() {
-  let story = useLoaderData();
+  let { story } = useLoaderData();
   story = useStoryblokState(story);
 
   return (
@@ -35,5 +35,5 @@ export const loader = async ({ params, preview = false }) => {
     `cdn/stories/${blogSlug ? blogSlug : slug}`,
     sbParams
   );
-  return json(data?.story, preview);
+  return json({ story: data?.story }, preview);
 };
