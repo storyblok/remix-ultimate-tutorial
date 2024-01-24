@@ -8,7 +8,7 @@ import {
 } from "@storyblok/react";
 
 export default function Page() {
-  let story = useLoaderData();
+  let { story } = useLoaderData();
   story = useStoryblokState(story);
 
   return (
@@ -24,6 +24,7 @@ export const loader = async ({ params, preview = false }) => {
 
   let sbParams = {
     version: "draft",
+    resolve_relations: ["popular-articles.articles"],
   };
 
   if (preview) {
@@ -35,5 +36,10 @@ export const loader = async ({ params, preview = false }) => {
     `cdn/stories/${blogSlug ? blogSlug : slug}`,
     sbParams
   );
-  return json(data?.story, preview);
+  let { data: articles } = await getStoryblokApi().get(`cdn/stories`, {
+    version: "draft", // or 'published'
+    starts_with: "blog/",
+    is_startpage: 0,
+  });
+  return json({ story: data?.story, articles: articles?.stories }, preview);
 };
