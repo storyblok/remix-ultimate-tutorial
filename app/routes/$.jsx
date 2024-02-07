@@ -20,10 +20,30 @@ export default function Page() {
   );
 }
 
-export const loader = async ({ params, preview = false }) => {
+export const loader = async ({ params, request, preview = false }) => {
   let slug = params["*"] ?? "home";
   let blogSlug = params["*"] === "blog/" ? "blog/home" : null;
-  // let lang = params.lang || "default";
+
+  // Extract the language from the URL
+  let url = new URL(request.url);
+  let pathParts = url.pathname.split("/");
+  let lang = pathParts[1];
+
+  // If the language is not one of the supported languages, it's 'en' and the first part of the URL is part of the slug
+  const supportedLanguages = ["en", "es"];
+  if (!supportedLanguages.includes(lang)) {
+    lang = "en";
+  } else {
+    // Remove the language part from the slug
+    if (pathParts[0] === "") {
+      pathParts.shift(); // Remove the first empty string from the array
+    }
+    pathParts.shift(); // Remove the language part from the array
+  }
+
+  slug = pathParts.join("/") || slug;
+  slug = slug === "/" || slug === lang ? "home" : slug;
+
   slug = blogSlug ? blogSlug : slug;
 
   if (!slug) {
@@ -33,7 +53,7 @@ export const loader = async ({ params, preview = false }) => {
   let sbParams = {
     version: "draft",
     resolve_relations: ["popular-articles.articles"],
-    language: "en",
+    language: lang,
   };
 
   if (preview) {
