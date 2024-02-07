@@ -21,9 +21,9 @@ export default function Page() {
 }
 
 export const loader = async ({ params, preview = false }) => {
-  let slug = params["*"] ?? (lang === "es" ? "es/home" : "home");
+  let slug = params["*"] ?? "home";
   let blogSlug = params["*"] === "blog/" ? "blog/home" : null;
-  let lang = params.lang || "default";
+  // let lang = params.lang || "default";
   slug = blogSlug ? blogSlug : slug;
 
   if (!slug) {
@@ -33,7 +33,7 @@ export const loader = async ({ params, preview = false }) => {
   let sbParams = {
     version: "draft",
     resolve_relations: ["popular-articles.articles"],
-    language: lang,
+    language: "default",
   };
 
   if (preview) {

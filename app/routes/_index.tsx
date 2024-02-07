@@ -1,1 +1,1 @@
-export { default, loader } from "./($lang).$.jsx";
+export { default, loader } from "./$.jsx";
