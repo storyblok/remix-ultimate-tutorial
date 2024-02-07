@@ -33,7 +33,7 @@ export const loader = async ({ params, preview = false }) => {
   let sbParams = {
     version: "draft",
     resolve_relations: ["popular-articles.articles"],
-    language: "default",
+    language: "en",
   };
 
   if (preview) {
