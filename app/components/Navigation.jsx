@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, NavLink, useLocation } from "@remix-run/react";
+import { getTransLink, languages } from "../utils/langs";
 
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const languages = ["en", "es"];
   const currentLanguage =
     languages.find((lang) => currentPath.startsWith(`/${lang}`)) || "en";
 
@@ -59,17 +59,26 @@ const Navigation = () => {
             </button>
           </div>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
-            <NavLink prefetch="intent" to={`${languagePrefix}/about`}>
+            <NavLink
+              prefetch="intent"
+              to={getTransLink("/about", currentLanguage)}
+            >
               <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                 About
               </a>
             </NavLink>
-            <NavLink prefetch="intent" to={`${languagePrefix}/blog`}>
+            <NavLink
+              prefetch="intent"
+              to={getTransLink("/blog", currentLanguage)}
+            >
               <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                 Blog
               </a>
             </NavLink>
-            <NavLink prefetch="intent" to={`${languagePrefix}/services`}>
+            <NavLink
+              prefetch="intent"
+              to={getTransLink("/services", currentLanguage)}
+            >
               <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                 Services
               </a>
