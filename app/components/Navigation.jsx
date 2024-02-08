@@ -1,16 +1,12 @@
 import { useState } from "react";
-import { Link, NavLink, useLocation } from "@remix-run/react";
-import { getTransLink, languages } from "../utils/langs";
+import { Link, NavLink } from "@remix-run/react";
+import { getTransLink, languages, useCurrentLanguage } from "../utils/langs";
 
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
-  const location = useLocation();
-  const currentPath = location.pathname;
 
-  const currentLanguage =
-    languages.find((lang) => currentPath.startsWith(`/${lang}`)) || "en";
+  const { currentLanguage, currentPath } = useCurrentLanguage();
 
-  const languagePrefix = currentLanguage === "en" ? "" : `/${currentLanguage}`;
   return (
     <div className="relative bg-white border-b-2 border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -85,16 +81,18 @@ const Navigation = () => {
             </NavLink>
           </div>
           {languages.map((lang) => {
-            if (lang === currentLanguage) return null; // don't create a switcher for the current language
+            if (lang === currentLanguage) return null; // Don't create a switcher for the current language
 
             let switchLanguagePath;
-            if (currentPath === "/" || currentPath === "/en") {
-              switchLanguagePath = lang === "en" ? "/" : `/${lang}`; // special case for home page
+            if (currentPath === "/" || currentPath === `/${currentLanguage}`) {
+              switchLanguagePath = lang === "en" ? "/" : `/${lang}`; // Special case for the home page
+            } else if (currentPath.startsWith(`/${currentLanguage}`)) {
+              switchLanguagePath =
+                lang === "en"
+                  ? currentPath.replace(`/${currentLanguage}`, "") // Remove current language prefix for English
+                  : currentPath.replace(`/${currentLanguage}`, `/${lang}`); // Replace current language prefix with new language
             } else {
-              switchLanguagePath = currentPath.replace(
-                `/${currentLanguage}`,
-                `/${lang}`
-              );
+              switchLanguagePath = `/${lang}${currentPath}`; // Add new language prefix to the current path
             }
 
             return (

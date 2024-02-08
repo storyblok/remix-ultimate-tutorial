@@ -1,6 +1,8 @@
 import { Link } from "@remix-run/react";
+import { getTransLink, useCurrentLanguage } from "../utils/langs";
 
 const ArticleTeaser = ({ article }) => {
+  const { currentLanguage } = useCurrentLanguage();
   return (
     <div className="column feature">
       <div className="p-6">
@@ -19,7 +21,7 @@ const ArticleTeaser = ({ article }) => {
         </div>
         <div className="mt-4">
           <Link
-            to={`/blog/${article.slug}`}
+            to={getTransLink(`/blog/${article.slug}`, currentLanguage)}
             prefetch="intent"
             className="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600"
           >
