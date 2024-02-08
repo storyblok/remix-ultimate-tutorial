@@ -5,19 +5,12 @@ const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const location = useLocation();
   const currentPath = location.pathname;
-  const isSpanish = currentPath.startsWith("/es");
-  console.log("location", location);
 
-  let switchLanguagePath;
-  if (currentPath === "/") {
-    switchLanguagePath = isSpanish ? "/" : "/es"; // special case for home page
-  } else {
-    switchLanguagePath = isSpanish
-      ? currentPath.replace("/es", "") // switch to English
-      : `/es${currentPath}`; // switch to Spanish
-  }
+  const languages = ["en", "es"];
+  const currentLanguage =
+    languages.find((lang) => currentPath.startsWith(`/${lang}`)) || "en";
 
-  const languagePrefix = isSpanish ? "/es" : "";
+  const languagePrefix = currentLanguage === "en" ? "" : `/${currentLanguage}`;
   return (
     <div className="relative bg-white border-b-2 border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -82,7 +75,25 @@ const Navigation = () => {
               </a>
             </NavLink>
           </div>
-          <Link to={switchLanguagePath}>{isSpanish ? "EN" : "ES"}</Link>
+          {languages.map((lang) => {
+            if (lang === currentLanguage) return null; // don't create a switcher for the current language
+
+            let switchLanguagePath;
+            if (currentPath === "/" || currentPath === "/en") {
+              switchLanguagePath = lang === "en" ? "/" : `/${lang}`; // special case for home page
+            } else {
+              switchLanguagePath = currentPath.replace(
+                `/${currentLanguage}`,
+                `/${lang}`
+              );
+            }
+
+            return (
+              <Link key={lang} to={switchLanguagePath}>
+                {lang.toUpperCase()}
+              </Link>
+            );
+          })}
         </div>
       </div>
 
