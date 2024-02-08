@@ -1,9 +1,23 @@
 import { useState } from "react";
-import { Link, NavLink } from "@remix-run/react";
+import { Link, NavLink, useLocation } from "@remix-run/react";
 
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const isSpanish = currentPath.startsWith("/es");
+  console.log("location", location);
 
+  let switchLanguagePath;
+  if (currentPath === "/") {
+    switchLanguagePath = isSpanish ? "/" : "/es"; // special case for home page
+  } else {
+    switchLanguagePath = isSpanish
+      ? currentPath.replace("/es", "") // switch to English
+      : `/es${currentPath}`; // switch to Spanish
+  }
+
+  const languagePrefix = isSpanish ? "/es" : "";
   return (
     <div className="relative bg-white border-b-2 border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -52,22 +66,23 @@ const Navigation = () => {
             </button>
           </div>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
-            <NavLink prefetch="intent" to="/about">
+            <NavLink prefetch="intent" to={`${languagePrefix}/about`}>
               <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                 About
               </a>
             </NavLink>
-            <NavLink prefetch="intent" to="/blog">
+            <NavLink prefetch="intent" to={`${languagePrefix}/blog`}>
               <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                 Blog
               </a>
             </NavLink>
-            <NavLink prefetch="intent" to="/services">
+            <NavLink prefetch="intent" to={`${languagePrefix}/services`}>
               <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                 Services
               </a>
             </NavLink>
           </div>
+          <Link to={switchLanguagePath}>{isSpanish ? "EN" : "ES"}</Link>
         </div>
       </div>
 
