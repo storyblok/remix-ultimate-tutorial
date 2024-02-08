@@ -1,5 +1,6 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { languages } from "../utils/langs";
 
 import {
   getStoryblokApi,
@@ -30,8 +31,8 @@ export const loader = async ({ params, request, preview = false }) => {
   let lang = pathParts[1];
 
   // If the language is not one of the supported languages, it's 'en' and the first part of the URL is part of the slug
-  const supportedLanguages = ["en", "es"];
-  if (!supportedLanguages.includes(lang)) {
+
+  if (!languages.includes(lang)) {
     lang = "en";
   } else {
     // Remove the language part from the slug

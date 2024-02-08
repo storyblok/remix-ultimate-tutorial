@@ -84,6 +84,7 @@ const Navigation = () => {
             if (lang === currentLanguage) return null; // Don't create a switcher for the current language
 
             let switchLanguagePath;
+
             if (currentPath === "/" || currentPath === `/${currentLanguage}`) {
               switchLanguagePath = lang === "en" ? "/" : `/${lang}`; // Special case for the home page
             } else if (currentPath.startsWith(`/${currentLanguage}`)) {
@@ -95,9 +96,20 @@ const Navigation = () => {
               switchLanguagePath = `/${lang}${currentPath}`; // Add new language prefix to the current path
             }
 
+            let flagEmoji;
+            if (lang === "en") {
+              flagEmoji = "🇺🇸";
+            } else if (lang === "es") {
+              flagEmoji = "🇪🇸";
+            }
+
             return (
-              <Link key={lang} to={switchLanguagePath}>
-                {lang.toUpperCase()}
+              <Link
+                key={lang}
+                to={switchLanguagePath}
+                className="font-bold text-3xl"
+              >
+                {flagEmoji}
               </Link>
             );
           })}
