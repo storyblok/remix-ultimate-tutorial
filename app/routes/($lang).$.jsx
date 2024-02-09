@@ -22,16 +22,15 @@ export default function Page() {
 }
 
 export const loader = async ({ params, request, preview = false }) => {
-  let slug = params["*"] ?? "home";
+  let lang = params.lang;
+  let slug = params["*"] ?? lang ? `/${lang}/home}` : "home";
   let blogSlug = params["*"] === "blog/" ? "blog/home" : null;
-
   // Extract the language from the URL
   let url = new URL(request.url);
   let pathParts = url.pathname.split("/");
-  let lang = pathParts[1];
-
+  // let slugParts = slug.split("/");
+  let langPath = pathParts[1];
   // If the language is not one of the supported languages, it's 'en' and the first part of the URL is part of the slug
-
   if (!languages.includes(lang)) {
     lang = "en";
   } else {
@@ -46,6 +45,16 @@ export const loader = async ({ params, request, preview = false }) => {
   slug = slug === "/" || slug === lang ? "home" : slug;
 
   slug = blogSlug ? blogSlug : slug;
+  console.log(
+    "langPath",
+    langPath,
+    "lang",
+    lang,
+    "slug",
+    slug,
+    "params",
+    params["*"]
+  );
 
   if (!slug) {
     throw new Response("Not Found", { status: 404 });
