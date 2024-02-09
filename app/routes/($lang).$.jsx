@@ -45,16 +45,6 @@ export const loader = async ({ params, request, preview = false }) => {
   slug = slug === "/" || slug === lang ? "home" : slug;
 
   slug = blogSlug ? blogSlug : slug;
-  console.log(
-    "langPath",
-    langPath,
-    "lang",
-    lang,
-    "slug",
-    slug,
-    "params",
-    params["*"]
-  );
 
   if (!slug) {
     throw new Response("Not Found", { status: 404 });
