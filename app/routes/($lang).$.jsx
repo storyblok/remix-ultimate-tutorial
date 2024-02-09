@@ -25,11 +25,11 @@ export const loader = async ({ params, request, preview = false }) => {
   let lang = params.lang;
   let slug = params["*"] ?? lang ? `/${lang}/home}` : "home";
   let blogSlug = params["*"] === "blog/" ? "blog/home" : null;
-  // Extract the language from the URL
+
   let url = new URL(request.url);
   let pathParts = url.pathname.split("/");
-  // let slugParts = slug.split("/");
-  let langPath = pathParts[1];
+  console.log("url", url.pathname, "params", params);
+
   // If the language is not one of the supported languages, it's 'en' and the first part of the URL is part of the slug
   if (!languages.includes(lang)) {
     lang = "en";
