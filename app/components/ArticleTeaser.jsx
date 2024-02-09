@@ -25,7 +25,7 @@ const ArticleTeaser = ({ article }) => {
             prefetch="intent"
             className="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600"
           >
-            Read More »
+            {currentLanguage === "en" ? "Read More »" : "Leer más »"}
           </Link>
         </div>
       </div>

@@ -67,6 +67,7 @@ export const loader = async ({ params, request, preview = false }) => {
   let { data: articles } = await getStoryblokApi().get(`cdn/stories`, {
     version: "draft", // or 'published'
     starts_with: "blog/",
+    language: lang,
     is_startpage: 0,
   });
   return json({ story: data?.story, articles: articles?.stories }, preview);
