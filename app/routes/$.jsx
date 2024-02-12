@@ -30,10 +30,16 @@ export const loader = async ({ params, preview = false }) => {
     sbParams.version = "draft";
     sbParams.cv = Date.now();
   }
+  let { data } = await getStoryblokApi()
+    .get(`cdn/stories/${blogSlug ? blogSlug : slug}`, sbParams)
+    .catch((e) => {
+      console.log("e", e);
+      return { data: null };
+    });
 
-  let { data } = await getStoryblokApi().get(
-    `cdn/stories/${blogSlug ? blogSlug : slug}`,
-    sbParams
-  );
+  if (!data) {
+    throw new Response("Not Found", { status: 404 });
+  }
+
   return json({ story: data?.story }, preview);
 };
