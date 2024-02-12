@@ -47,10 +47,6 @@ export const loader = async ({ params, request, preview = false }) => {
 
   slug = blogSlug ? blogSlug : slug;
 
-  if (!slug) {
-    throw new Response("Not Found", { status: 404 });
-  }
-
   let sbParams = {
     version: "draft",
     resolve_relations: ["popular-articles.articles"],
@@ -62,7 +58,16 @@ export const loader = async ({ params, request, preview = false }) => {
     sbParams.cv = Date.now();
   }
 
-  let { data } = await getStoryblokApi().get(`cdn/stories/${slug}`, sbParams);
+  const { data } = await getStoryblokApi()
+    .get(`cdn/stories/${slug}`, sbParams)
+    .catch((e) => {
+      console.log("e", e);
+      return { data: null };
+    });
+
+  if (!data) {
+    throw new Response("Not Found", { status: 404 });
+  }
 
   let { data: articles } = await getStoryblokApi().get(`cdn/stories`, {
     version: "draft", // or 'published'
