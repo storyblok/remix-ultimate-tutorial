@@ -7,7 +7,9 @@
     "build": "npm run redirects:enable && remix build",
     "dev": "npm run redirects:disable && remix dev",
     "start": "netlify serve",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "redirects:enable": "shx cp .redirects public/_redirects",
+    "redirects:disable": "shx rm -f public/_redirects"
   },
   "dependencies": {
     "@netlify/functions": "^2.0.0",
@@ -17,7 +19,8 @@
     "@tailwindcss/typography": "^0.5.10",
     "cross-env": "^7.0.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "shx": "^0.3.4"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.3.1",
