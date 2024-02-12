@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link, NavLink } from "@remix-run/react";
+import { getTransLink, languages, useCurrentLanguage } from "../utils/langs";
 
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
+
+  const { currentLanguage, currentPath } = useCurrentLanguage();
 
   return (
     <div className="relative bg-white border-b-2 border-gray-100">
@@ -52,22 +55,64 @@ const Navigation = () => {
             </button>
           </div>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
-            <NavLink prefetch="intent" to="/about">
+            <NavLink
+              prefetch="intent"
+              to={getTransLink("/about", currentLanguage)}
+            >
               <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                 About
               </a>
             </NavLink>
-            <NavLink prefetch="intent" to="/blog">
+            <NavLink
+              prefetch="intent"
+              to={getTransLink("/blog", currentLanguage)}
+            >
               <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                 Blog
               </a>
             </NavLink>
-            <NavLink prefetch="intent" to="/services">
+            <NavLink
+              prefetch="intent"
+              to={getTransLink("/services", currentLanguage)}
+            >
               <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                 Services
               </a>
             </NavLink>
           </div>
+          {languages.map((lang) => {
+            if (lang === currentLanguage) return null; // Don't create a switcher for the current language
+
+            let switchLanguagePath;
+
+            if (currentPath === "/" || currentPath === `/${currentLanguage}`) {
+              switchLanguagePath = lang === "en" ? "/" : `/${lang}`; // Special case for the home page
+            } else if (currentPath.startsWith(`/${currentLanguage}`)) {
+              switchLanguagePath =
+                lang === "en"
+                  ? currentPath.replace(`/${currentLanguage}`, "") // Remove current language prefix for English
+                  : currentPath.replace(`/${currentLanguage}`, `/${lang}`); // Replace current language prefix with new language
+            } else {
+              switchLanguagePath = `/${lang}${currentPath}`; // Add new language prefix to the current path
+            }
+
+            let flagEmoji;
+            if (lang === "en") {
+              flagEmoji = "🇺🇸";
+            } else if (lang === "es") {
+              flagEmoji = "🇪🇸";
+            }
+
+            return (
+              <Link
+                key={lang}
+                to={switchLanguagePath}
+                className="font-bold text-3xl"
+              >
+                {flagEmoji}
+              </Link>
+            );
+          })}
         </div>
       </div>
 

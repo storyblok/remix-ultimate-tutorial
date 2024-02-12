@@ -1,4 +1,4 @@
-import { render } from "storyblok-rich-text-react-renderer";
+import { renderRichText } from "@storyblok/react";
 
 const Article = ({ blok }) => {
   return (
@@ -18,9 +18,10 @@ const Article = ({ blok }) => {
           <h2 className="title-font sm:text-3xl text-2xl mb-4 font-medium text-gray-600">
             {blok.subtitle}
           </h2>
-          <div className="mb-8 leading-relaxed text-left max-w-full prose">
-            {render(blok.content)}
-          </div>
+          <div
+            className="mb-8 leading-relaxed text-left max-w-full prose"
+            dangerouslySetInnerHTML={{ __html: renderRichText(blok.content) }}
+          />
         </div>
       </div>
     </section>
