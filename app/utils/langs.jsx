@@ -2,6 +2,7 @@ import { useLocation } from "@remix-run/react";
 
 //You can have the languages in an utils file so it can be reused.
 let languages = ["en", "es"];
+
 const useCurrentLanguage = () => {
   const location = useLocation();
   const currentPath = location.pathname;
