@@ -4,8 +4,8 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix build",
-    "dev": "remix dev",
+    "build": "npm run redirects:enable && remix build",
+    "dev": "npm run redirects:disable && remix dev",
     "start": "netlify serve",
     "typecheck": "tsc -b"
   },
