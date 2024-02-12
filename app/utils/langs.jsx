@@ -11,6 +11,9 @@ const useCurrentLanguage = () => {
 };
 
 function getTransLink(slug, language) {
+  if (slug === "/") {
+    return language === "en" ? slug : `/${language}`;
+  }
   return language === "en" ? slug : `/${language}${slug}`;
 }
 
