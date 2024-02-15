@@ -39,7 +39,7 @@ const accessToken = isServer
     window.env.STORYBLOK_TOKEN;
 
 storyblokInit({
-  accessToken: process.env.STORYBLOK_TOKEN,
+  accessToken,
   use: [apiPlugin],
   components,
 });
@@ -53,7 +53,6 @@ export const loader = async ({ params }) => {
       STORYBLOK_TOKEN: process.env.STORYBLOK_TOKEN,
       IS_PREVIEW: process.env.IS_PREVIEW,
     },
-    test: "test",
   });
 };
 export const links = () => [{ rel: "stylesheet", href: stylesheet }];
