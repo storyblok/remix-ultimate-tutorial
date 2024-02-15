@@ -31,6 +31,12 @@ const components = {
   "all-articles": AllArticles,
   "popular-articles": PopularArticles,
 };
+const isServer = typeof window === "undefined";
+
+const accessToken = isServer
+  ? process.env.STORYBLOK_TOKEN
+  : //@ts-ignore
+    window.env.STORYBLOK_TOKEN;
 
 storyblokInit({
   accessToken: process.env.STORYBLOK_TOKEN,
@@ -41,12 +47,19 @@ storyblokInit({
 export const loader = async ({ params }) => {
   let lang = params.lang || "default";
 
-  return json({ lang });
+  return json({
+    lang,
+    env: {
+      STORYBLOK_TOKEN: process.env.STORYBLOK_TOKEN,
+      IS_PREVIEW: process.env.IS_PREVIEW,
+    },
+    test: "test",
+  });
 };
 export const links = () => [{ rel: "stylesheet", href: stylesheet }];
 
 export default function App() {
-  const { lang } = useLoaderData;
+  const { lang, env } = useLoaderData();
   return (
     <html lang={lang}>
       <head>
@@ -62,6 +75,11 @@ export default function App() {
           <Scripts />
           <LiveReload />
         </Layout>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.env = ${JSON.stringify(env)}`,
+          }}
+        />
       </body>
     </html>
   );
