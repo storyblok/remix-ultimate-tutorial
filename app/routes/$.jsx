@@ -1,6 +1,7 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { languages } from "../utils/langs";
+import { languages } from "~/utils/langs";
+import { isPreview } from "~/utils/isPreview";
 
 import {
   getStoryblokApi,
@@ -46,9 +47,11 @@ export const loader = async ({ params, request, preview = false }) => {
   slug = slug === "/" || slug === lang ? "home" : slug;
 
   slug = blogSlug ? blogSlug : slug;
+  let version = isPreview() ? "draft" : "published";
+  console.log("version", version);
 
   let sbParams = {
-    version: "draft",
+    version,
     resolve_relations: ["popular-articles.articles"],
     language: lang,
   };
@@ -70,7 +73,7 @@ export const loader = async ({ params, request, preview = false }) => {
   }
 
   let { data: articles } = await getStoryblokApi().get(`cdn/stories`, {
-    version: "draft", // or 'published'
+    version,
     starts_with: "blog/",
     language: lang,
     is_startpage: 0,

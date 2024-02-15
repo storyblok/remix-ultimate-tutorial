@@ -20,6 +20,7 @@ import Hero from "./components/Hero";
 import Article from "./components/Article";
 import AllArticles from "./components/AllArticles";
 import PopularArticles from "./components/PopularArticles";
+import { isPreview } from "~/utils/isPreview";
 
 const components = {
   feature: Feature,
@@ -35,13 +36,13 @@ const isServer = typeof window === "undefined";
 
 const accessToken = isServer
   ? process.env.STORYBLOK_TOKEN
-  : //@ts-ignore
-    window.env.STORYBLOK_TOKEN;
+  : window.env.STORYBLOK_TOKEN;
 
 storyblokInit({
   accessToken,
   use: [apiPlugin],
   components,
+  bridge: isPreview(),
 });
 
 export const loader = async ({ params }) => {
@@ -51,7 +52,7 @@ export const loader = async ({ params }) => {
     lang,
     env: {
       STORYBLOK_TOKEN: process.env.STORYBLOK_TOKEN,
-      IS_PREVIEW: process.env.IS_PREVIEW,
+      STORYBLOK_IS_PREVIEW: process.env.STORYBLOK_IS_PREVIEW,
     },
   });
 };
