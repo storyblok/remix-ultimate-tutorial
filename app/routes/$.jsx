@@ -28,12 +28,12 @@ export const loader = async ({ params, request, preview = false }) => {
   // Extract the language from the URL
   let url = new URL(request.url);
   let pathParts = url.pathname.split("/");
-  let lang = pathParts[1];
+  let language = pathParts[1];
 
   // If the language is not one of the supported languages, it's 'en' and the first part of the URL is part of the slug
 
-  if (!languages.includes(lang)) {
-    lang = "en";
+  if (!languages.includes(language)) {
+    language = "en";
   } else {
     // Remove the language part from the slug
     if (pathParts[0] === "") {
@@ -43,14 +43,14 @@ export const loader = async ({ params, request, preview = false }) => {
   }
 
   slug = pathParts.join("/") || slug;
-  slug = slug === "/" || slug === lang ? "home" : slug;
+  slug = slug === "/" || slug === language ? "home" : slug;
 
   slug = blogSlug ? blogSlug : slug;
 
   let sbParams = {
     version: "draft",
     resolve_relations: ["popular-articles.articles"],
-    language: lang,
+    language,
   };
 
   if (preview) {
@@ -72,7 +72,7 @@ export const loader = async ({ params, request, preview = false }) => {
   let { data: articles } = await getStoryblokApi().get(`cdn/stories`, {
     version: "draft", // or 'published'
     starts_with: "blog/",
-    language: lang,
+    language,
     is_startpage: 0,
   });
   return json({ story: data?.story, articles: articles?.stories }, preview);
