@@ -45,5 +45,5 @@ export const loader = async ({ params }) => {
     starts_with: "blog/",
     is_startpage: 0,
   });
-  return json({ story: data?.story, articles: articles?.stories }, preview);
+  return json({ story: data?.story, articles: articles?.stories });
 };
