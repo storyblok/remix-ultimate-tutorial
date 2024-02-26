@@ -18,18 +18,13 @@ export default function Page() {
   );
 }
 
-export const loader = async ({ params, preview = false }) => {
+export const loader = async ({ params }) => {
   let slug = params["*"] ?? "home";
   let blogSlug = params["*"] === "blog/" ? "blog/home" : null;
 
   let sbParams = {
     version: "draft",
   };
-
-  if (preview) {
-    sbParams.version = "draft";
-    sbParams.cv = Date.now();
-  }
 
   let { data } = await getStoryblokApi()
     .get(`cdn/stories/${blogSlug ? blogSlug : slug}`, sbParams)
