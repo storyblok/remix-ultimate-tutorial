@@ -18,7 +18,7 @@ export default function Page() {
   );
 }
 
-export const loader = async ({ params, preview = false }) => {
+export const loader = async ({ params }) => {
   let slug = params["*"] ?? "home";
   let blogSlug = params["*"] === "blog/" ? "blog/home" : null;
 
@@ -26,10 +26,13 @@ export const loader = async ({ params, preview = false }) => {
     version: "draft",
   };
 
+<<<<<<< HEAD
   if (preview) {
     sbParams.version = "draft";
     sbParams.cv = Date.now();
   }
+=======
+>>>>>>> 910a130 (Refactor loader function in routes file)
   let { data } = await getStoryblokApi()
     .get(`cdn/stories/${blogSlug ? blogSlug : slug}`, sbParams)
     .catch((e) => {
