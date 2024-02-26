@@ -1,6 +1,6 @@
 # Remix Ultimate Tutorial
 
-This repository is a Remix [Storyblok](https://www.storyblok.com) starter template used in following [5 minute tutorial](https://www.storyblok.com/tp/headless-cms-remix)...
+This repository is a Remix [Storyblok](https://www.storyblok.com) starter template used in following [5 minute tutorial](https://www.storyblok.com/tp/headless-cms-remix)..
 
 ## Requirements
 
