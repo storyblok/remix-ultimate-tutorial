@@ -21,7 +21,7 @@ export default function Page() {
   );
 }
 
-export const loader = async ({ params, request, preview = false }) => {
+export const loader = async ({ params, request }) => {
   let slug = params["*"] ?? "home";
   let blogSlug = params["*"] === "blog/" ? "blog/home" : null;
 
@@ -52,11 +52,6 @@ export const loader = async ({ params, request, preview = false }) => {
     resolve_relations: ["popular-articles.articles"],
     language,
   };
-
-  if (preview) {
-    sbParams.version = "draft";
-    sbParams.cv = Date.now();
-  }
 
   const { data } = await getStoryblokApi()
     .get(`cdn/stories/${slug}`, sbParams)
