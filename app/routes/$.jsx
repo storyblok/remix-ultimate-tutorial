@@ -37,5 +37,5 @@ export const loader = async ({ params }) => {
     throw new Response("Not Found", { status: 404 });
   }
 
-  return json({ story: data?.story }, preview);
+  return json({ story: data?.story });
 };
