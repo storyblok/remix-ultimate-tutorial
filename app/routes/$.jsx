@@ -22,7 +22,7 @@ export default function Page() {
   );
 }
 
-export const loader = async ({ params, request, preview = false }) => {
+export const loader = async ({ params, request }) => {
   let slug = params["*"] ?? "home";
   let blogSlug = params["*"] === "blog/" ? "blog/home" : null;
 
@@ -56,11 +56,6 @@ export const loader = async ({ params, request, preview = false }) => {
     language,
   };
 
-  if (preview) {
-    sbParams.version = "draft";
-    sbParams.cv = Date.now();
-  }
-
   const { data } = await getStoryblokApi()
     .get(`cdn/stories/${slug}`, sbParams)
     .catch((e) => {
@@ -78,5 +73,5 @@ export const loader = async ({ params, request, preview = false }) => {
     language,
     is_startpage: 0,
   });
-  return json({ story: data?.story, articles: articles?.stories }, preview);
+  return json({ story: data?.story, articles: articles?.stories });
 };
