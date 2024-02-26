@@ -26,13 +26,6 @@ export const loader = async ({ params }) => {
     version: "draft",
   };
 
-<<<<<<< HEAD
-  if (preview) {
-    sbParams.version = "draft";
-    sbParams.cv = Date.now();
-  }
-=======
->>>>>>> 910a130 (Refactor loader function in routes file)
   let { data } = await getStoryblokApi()
     .get(`cdn/stories/${blogSlug ? blogSlug : slug}`, sbParams)
     .catch((e) => {
