@@ -48,7 +48,6 @@ export const loader = async ({ params, request }) => {
 
   slug = blogSlug ? blogSlug : slug;
   let version = isPreview() ? "draft" : "published";
-  console.log("version", version);
 
   let sbParams = {
     version,
