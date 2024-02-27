@@ -4,7 +4,7 @@ This repository is a Remix [Storyblok](https://www.storyblok.com) starter templa
 
 ## Requirements
 
-To use this project you need a Storyblok account. If you don't have one yet you can register at [Storyblok](https://www.storyblok.com). It's free.
+To use this project you need a Storyblok account. If you don't have one yet you can register at [Storyblok](https://www.storyblok.com). It's free
 
 ## How to get started?
 
