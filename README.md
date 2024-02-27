@@ -28,7 +28,7 @@ Create a new empty Space and exchange the preview token of your new space with t
 
 ### 4. Run your project
 
-Set the preview domain in <strong>Storyblok</strong> to `http://localhost:3000/`
+Set the preview domain in <strong>Storyblok</strong> to `http://localhost:3000/`.
 
 ```sh
 npm run dev
