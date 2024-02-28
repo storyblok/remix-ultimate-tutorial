@@ -53,6 +53,7 @@ export const loader = async ({ params, request }) => {
     version,
     resolve_relations: ["popular-articles.articles"],
     language,
+    cv: Date.now(),
   };
 
   const { data } = await getStoryblokApi()
@@ -71,6 +72,7 @@ export const loader = async ({ params, request }) => {
     starts_with: "blog/",
     language,
     is_startpage: 0,
+    cv: Date.now(),
   });
   return json({ story: data?.story, articles: articles?.stories });
 };
