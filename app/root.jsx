@@ -41,6 +41,12 @@ const accessToken = isServer
 storyblokInit({
   accessToken,
   use: [apiPlugin],
+  apiOptions: {
+    cache: {
+      clear: "auto",
+      type: "memory",
+    },
+  },
   components,
   bridge: isPreview(),
 });
