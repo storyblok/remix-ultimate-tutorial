@@ -53,7 +53,6 @@ export const loader = async ({ params, request }) => {
     version,
     resolve_relations: ["popular-articles.articles"],
     language,
-    // cv: Date.now(),
   };
 
   const { data } = await getStoryblokApi()
