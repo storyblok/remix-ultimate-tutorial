@@ -56,7 +56,7 @@ export const loader = async ({ params, request }) => {
   };
 
   const { data } = await getStoryblokApi()
-    .get(`cdn/stories/${slug}`, sbParams, { cache: "no-store" })
+    .get(`cdn/stories/${slug}`, sbParams)
     .catch((e) => {
       console.log("e", e);
       return { data: null };
