@@ -73,7 +73,6 @@ export const loader = async ({ params, request }) => {
       starts_with: "blog/",
       language,
       is_startpage: 0,
-      // cv: Date.now(),
     },
     { cache: "no-store" }
   );
