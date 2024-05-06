@@ -8,7 +8,7 @@ const Article = ({ blok }) => {
           <img
             className="  md:h-96 w-full mb-10 object-cover object-center rounded"
             alt={blok.image.alt}
-            src={`${blok.image.filename}/m/1600x0`}
+            src={`${blok.image?.filename}/m/1600x0`}
           />
         )}
         <div className="text-center lg:w-2/3 w-full">
